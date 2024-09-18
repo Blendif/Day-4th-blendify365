@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendify365 - Product Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?technology');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto">
+        <div class="glassmorphism-card">
+            <img src="https://source.unsplash.com/random/800x400?book" alt="Product Image" class="rounded-lg mb-4">
+            <h1 class="text-4xl font-bold text-white mb-4">Ebook: The Journey of AI</h1>
+            <p class="text-lg text-white mb-6">This ebook explores the rapidly evolving world of AI and its impact on various industries. From machine learning to deep learning, this guide provides comprehensive insights into the future of technology.</p>
+            <p class="text-2xl text-white font-semibold mb-6">$9.99</p>
+            <button class="neumorphic-button">Add to Cart</button>
+        </div>
+    </div>
+</body>
+</html>

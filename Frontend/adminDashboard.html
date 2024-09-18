@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendify365 - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?admin');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .sidebar {
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .content-area {
+            padding: 20px;
+        }
+
+        .section-header {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .product-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="dashboard-grid">
+        <!-- Sidebar -->
+        <div class="glassmorphism sidebar">
+            <h1 class="text-4xl font-bold text-white mb-8">Admin Dashboard</h1>
+            <ul>
+                <li class="mb-6">
+                    <a href="#" class="text-lg text-white">Product Management</a>
+                </li>
+                <li class="mb-6">
+                    <a href="#" class="text-lg text-white">Transaction Overview</a>
+                </li>
+                <li class="mb-6">
+                    <a href="#" class="text-lg text-white">User Roles (Future)</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="glassmorphism content-area">
+            <!-- Product Management Section -->
+            <section>
+                <h2 class="section-header">Product Management</h2>
+                <div class="product-card">
+                    <h3 class="text-xl font-bold">Add New Product</h3>
+                    <form id="product-form" class="space-y-4 mt-4">
+                        <input type="text" placeholder="Product Title" class="neumorphic-input w-full">
+                        <textarea placeholder="Product Description" class="neumorphic-input w-full"></textarea>
+                        <input type="number" placeholder="Price" class="neumorphic-input w-full">
+                        <input type="file" class="neumorphic-input w-full">
+                        <button id="add-product-btn" class="neumorphic-button">Add Product</button>
+                    </form>
+                </div>
+
+                <!-- Existing Products -->
+                <h3 class="section-header mt-8">Manage Existing Products</h3>
+                <div class="product-card">
+                    <p class="text-lg">Ebook: The Journey of AI</p>
+                    <p class="text-md">$9.99</p>
+                    <button class="neumorphic-button">Edit</button>
+                    <button class="neumorphic-button">Delete</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

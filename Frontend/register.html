@@ -5,27 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blendify365 - User Authentication</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?technology');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .neumorphic-input {
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: inset 6px 6px 12px #c1c1c1, inset -6px -6px 12px #ffffff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="flex justify-center items-center h-screen">
-        <div class="w-full max-w-sm">
-            <form id="register-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-                    <input id="email" type="email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-                    <input id="password" type="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="flex items-center justify-between">
-                    <button id="register-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Register
-                    </button>
-                </div>
-            </form>
-        </div>
+<body class="flex justify-center items-center h-screen">
+    <div class="glassmorphism p-8 max-w-sm w-full">
+        <h2 class="text-2xl font-bold mb-6 text-center text-white">Register</h2>
+        <form id="register-form" class="space-y-4">
+            <div class="mb-4">
+                <label class="block text-white text-sm font-bold mb-2" for="email">Email</label>
+                <input id="email" type="email" class="neumorphic-input" placeholder="Enter your email">
+            </div>
+            <div class="mb-6">
+                <label class="block text-white text-sm font-bold mb-2" for="password">Password</label>
+                <input id="password" type="password" class="neumorphic-input" placeholder="Enter your password">
+            </div>
+            <div class="flex justify-center">
+                <button id="register-btn" class="neumorphic-button" type="button">Register</button>
+            </div>
+        </form>
     </div>
 
     <script>
@@ -45,4 +83,3 @@
     </script>
 </body>
 </html>
-￼Enter

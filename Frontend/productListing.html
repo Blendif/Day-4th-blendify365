@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendify365 - Marketplace</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?nature');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold text-white mb-8 text-center">Marketplace</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Product 1 -->
+            <div class="glassmorphism-card">
+                <img src="https://source.unsplash.com/random/400x300?book" alt="Product 1" class="rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-white mb-2">Ebook: The Journey of AI</h3>
+                <p class="text-white mb-4">Explore the future of AI and how it's transforming industries.</p>
+                <p class="text-lg text-white font-semibold mb-4">$9.99</p>
+                <button class="neumorphic-button">View Details</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="glassmorphism-card">
+                <img src="https://source.unsplash.com/random/400x300?coloring" alt="Product 2" class="rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-white mb-2">Printable Coloring Pages</h3>
+                <p class="text-white mb-4">Custom-designed coloring pages for all ages.</p>
+                <p class="text-lg text-white font-semibold mb-4">$4.99</p>
+                <button class="neumorphic-button">View Details</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="glassmorphism-card">
+                <img src="https://source.unsplash.com/random/400x300?wallpaper" alt="Product 3" class="rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-white mb-2">iOS/Android Wallpapers</h3>
+                <p class="text-white mb-4">High-quality wallpapers optimized for iOS and Android.</p>
+                <p class="text-lg text-white font-semibold mb-4">Free</p>
+                <button class="neumorphic-button">Download</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

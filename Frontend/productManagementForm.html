@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendify365 - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?admin');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+
+        .product-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="glassmorphism p-8">
+        <h1 class="text-4xl font-bold text-white mb-8">Admin Dashboard - Product Management</h1>
+
+        <!-- Add New Product Form -->
+        <div class="product-card">
+            <h3 class="text-xl font-bold">Add New Product</h3>
+            <form id="product-form" enctype="multipart/form-data" class="space-y-4 mt-4">
+                <input id="product-title" type="text" placeholder="Product Title" class="neumorphic-input w-full">
+                <textarea id="product-description" placeholder="Product Description" class="neumorphic-input w-full"></textarea>
+                <input id="product-price" type="number" placeholder="Price" class="neumorphic-input w-full">
+                <input id="product-image" type="file" class="neumorphic-input w-full">
+                <button id="add-product-btn" class="neumorphic-button" type="button">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Manage Existing Products Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendify365 - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1600x900?admin');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .neumorphic-button {
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 6px 6px 12px #c1c1c1, -6px -6px 12px #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: 4px 4px 8px #c1c1c1, -4px -4px 8px #ffffff;
+        }
+
+        .product-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="glassmorphism p-8">
+        <h1 class="text-4xl font-bold text-white mb-8">Admin Dashboard - Product Management</h1>
+
+        <!-- Add New Product Form -->
+        <div class="product-card">
+            <h3 class="text-xl font-bold">Add New Product</h3>
+            <form id="product-form" enctype="multipart/form-data" class="space-y-4 mt-4">
+                <input id="product-title" type="text" placeholder="Product Title" class="neumorphic-input w-full">
+                <textarea id="product-description" placeholder="Product Description" class="neumorphic-input w-full"></textarea>
+                <input id="product-price" type="number" placeholder="Price" class="neumorphic-input w-full">
+                <input id="product-image" type="file" class="neumorphic-input w-full">
+                <button id="add-product-btn" class="neumorphic-button" type="button">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Manage Existing Products Section -->
+        <h3 class="text-2xl font-bold text-white mt-8">Manage Existing Products</h3>
+        <div id="product-list" class="space-y-4 mt-4">
+            <!-- Existing products will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch and display products
+        async function loadProducts() {
+            const response = await fetch('http://localhost:5000/products');
+            const products = await response.json();
+
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Clear any previous content
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <p class="text-lg">${product.title}</p>
+                    <p class="text-md">$${product.price}</p>
+                    <button class="neumorphic-button" onclick="editProduct('${product._id}')">Edit</button>
+                    <button class="neumorphic-button" onclick="deleteProduct('${product._id}')">Delete</button>
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Function to add a new product
+        document.getElementById('add-product-btn').addEventListener('click', async () => {
+            const title = document.getElementById('product-title').value;
+            const description = document.getElementById('product-description').value;
+            const price = document.getElementById('product-price').value;
+            const image = document.getElementById('product-image').files[0];
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', price);
+            formData.append('productImage', image);
+
+            try {
+                const response = await fetch('http://localhost:5000/add-product', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                alert(result.message);
+                loadProducts(); // Refresh the product list
+            } catch (error) {
+                alert('Error adding product');
+            }
+        });
+
+        // Function to delete a product
+        async function deleteProduct(productId) {
+            try {
+                const response = await fetch(`http://localhost:5000/delete-product/${productId}`, {
+                    method: 'DELETE'
+                });
+                const result = await response.json();
+                alert(result.message);
+                loadProducts(); // Refresh the product list
+            } catch (error) {
+                alert('Error deleting product');
+            }
+        }
+
+        // Function to edit a product (can be expanded)
+        function editProduct(productId) {
+            alert('Edit functionality will be added later');
+        }
+
+        // Load products on page load
+        loadProducts();
+    </script>
+</body>
+</html>
+      <h3 class="text-2xl font-bold text-white mt-8">Manage Existing Products</h3>
+        <div id="product-list" class="space-y-4 mt-4">
+            <!-- Existing products will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch and display products
+        async function loadProducts() {
+            const response = await fetch('http://localhost:5000/products');
+            const products = await response.json();
+
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Clear any previous content
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <p class="text-lg">${product.title}</p>
+                    <p class="text-md">$${product.price}</p>
+                    <button class="neumorphic-button" onclick="editProduct('${product._id}')">Edit</button>
+                    <button class="neumorphic-button" onclick="deleteProduct('${product._id}')">Delete</button>
+                `;
+                productList.appendChild(productCard);
+            });
+  }
+
+        // Function to add a new product
+        document.getElementById('add-product-btn').addEventListener('click', async () => {
+            const title = document.getElementById('product-title').value;
+            const description = document.getElementById('product-description').value;
+            const price = document.getElementById('product-price').value;
+            const image = document.getElementById('product-image').files[0];
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', price);
+            formData.append('productImage', image);
+
+            try {
+                const response = await fetch('http://localhost:5000/add-product', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                alert(result.message);
+                loadProducts(); // Refresh the product list
+            } catch (error) {
+                alert('Error adding product');
+            }

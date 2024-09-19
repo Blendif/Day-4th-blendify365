@@ -1,0 +1,69 @@
+<!-- Add this to the existing HTML in the Admin Dashboard -->
+
+<!-- Edit Product Modal (Initially Hidden) -->
+<div id="edit-product-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="glassmorphism p-8 max-w-lg w-full">
+        <h3 class="text-xl font-bold text-white mb-4">Edit Product</h3>
+        <form id="edit-product-form" enctype="multipart/form-data" class="space-y-4">
+            <input id="edit-product-title" type="text" placeholder="Product Title" class="neumorphic-input w-full">
+            <textarea id="edit-product-description" placeholder="Product Description" class="neumorphic-input w-full"></textarea>
+            <input id="edit-product-price" type="number" placeholder="Price" class="neumorphic-input w-full">
+            <input id="edit-product-image" type="file" class="neumorphic-input w-full">
+            <input type="hidden" id="edit-product-id">
+            <div class="flex justify-between">
+                <button id="save-product-btn" class="neumorphic-button" type="button">Save Changes</button>
+                <button id="cancel-edit-btn" class="neumorphic-button" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Show Edit Product Modal
+    function editProduct(productId) {
+        fetch(`http://localhost:5000/products/${productId}`)
+            .then(response => response.json())
+            .then(product => {
+                document.getElementById('edit-product-title').value = product.title;
+                document.getElementById('edit-product-description').value = product.description;
+                document.getElementById('edit-product-price').value = product.price;
+                document.getElementById('edit-product-id').value = product._id;
+                document.getElementById('edit-product-modal').classList.remove('hidden');
+            });
+    }
+
+    // Save Edited Product
+    document.getElementById('save-product-btn').addEventListener('click', async () => {
+        const id = document.getElementById('edit-product-id').value;
+        const title = document.getElementById('edit-product-title').value;
+        const description = document.getElementById('edit-product-description').value;
+        const price = document.getElementById('edit-product-price').value;
+        const image = document.getElementById('edit-product-image').files[0];
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', price);
+        if (image) {
+            formData.append('productImage', image);
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5000/update-product/${id}`, {
+                method: 'PUT',
+                body: formData
+            });
+            const result = await response.json();
+            alert(result.message);
+            document.getElementById('edit-product-modal').classList.add('hidden');
+            loadProducts(); // Refresh the product list
+        } catch (error) {
+            alert('Error updating product');
+        }
+    });
+
+    // Cancel Edit
+    document.getElementById('cancel-edit-btn').addEventListener('click', () => {
+        document.getElementById('edit-product-modal').classList.add('hidden');
+    });
+</script>

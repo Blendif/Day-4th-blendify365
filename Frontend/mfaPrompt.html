@@ -1,0 +1,27 @@
+<!-- Add this after the login form -->
+<div id="mfa-section" class="hidden">
+    <h2>Enter MFA Code</h2>
+    <input type="text" id="mfa-token" placeholder="Enter code from Authenticator app" />
+    <button id="verify-mfa-btn">Verify MFA</button>
+</div>
+
+<script>
+    // Verify MFA Code
+    document.getElementById('verify-mfa-btn').addEventListener('click', async () => {
+        const token = document.getElementById('mfa-token').value;
+
+        const response = await fetch('/verify-mfa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token })
+        });
+
+        const result = await response.json();
+        if (result.message === 'MFA verified successfully') {
+            alert('MFA Successful!');
+        } else {
+            alert('Invalid MFA code');
+        }
+    });
+  </script>
+  

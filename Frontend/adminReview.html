@@ -1,0 +1,54 @@
+<!-- Admin Review Section (Visible to Admins Only) -->
+<div id="admin-review-controls" class="hidden"> <!-- Only visible to Admins -->
+    <h3 class="text-2xl font-bold text-white mt-8">Pending Products for Review</h3>
+    <div id="pending-products-list" class="space-y-4 mt-4">
+        <!-- Pending products will be dynamically loaded here -->
+    </div>
+</div>
+
+<script>
+    // Load pending products for review
+    function loadPendingProducts() {
+        fetch('/pending-products')
+            .then(response => response.json())
+            .then(products => {
+                const productList = document.getElementById('pending-products-list');
+                productList.innerHTML = ''; // Clear previous list
+
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+                    productCard.innerHTML = `
+                        <p class="text-lg">${product.title}</p>
+                        <p class="text-md">$${product.price}</p>
+                        <button class="neumorphic-button" onclick="approveProduct('${product._id}')">Approve</button>
+                        <button class="neumorphic-button" onclick="rejectProduct('${product._id}')">Reject</button>
+                    `;
+                    productList.appendChild(productCard);
+                });
+            });
+    }
+
+    // Approve product
+    function approveProduct(productId) {
+        fetch(`/approve-product/${productId}`, { method: 'PUT' })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                loadPendingProducts(); // Refresh pending list
+            });
+    }
+
+    // Reject product
+    function rejectProduct(productId) {
+        fetch(`/reject-product/${productId}`, { method: 'PUT' })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                loadPendingProducts(); // Refresh pending list
+            });
+    }
+
+    // Load pending products on page load
+    loadPendingProducts();
+</script>

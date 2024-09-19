@@ -1,0 +1,38 @@
+<!-- Creator Submission Section (Visible to Creators and Admins) -->
+<div id="creator-controls" class="hidden"> <!-- Only visible to Creators and Admins -->
+    <h3 class="text-2xl font-bold text-white mt-8">Submit Product for Review</h3>
+    <form id="creator-product-form" enctype="multipart/form-data" class="space-y-4 mt-4">
+        <input id="creator-product-title" type="text" placeholder="Product Title" class="neumorphic-input w-full">
+        <textarea id="creator-product-description" placeholder="Product Description" class="neumorphic-input w-full"></textarea>
+        <input id="creator-product-price" type="number" placeholder="Price" class="neumorphic-input w-full">
+        <input id="creator-product-image" type="file" class="neumorphic-input w-full">
+        <button id="submit-product-btn" class="neumorphic-button" type="button">Submit for Review</button>
+    </form>
+</div>
+
+<script>
+    // Submit product for review
+    document.getElementById('submit-product-btn').addEventListener('click', async () => {
+        const title = document.getElementById('creator-product-title').value;
+        const description = document.getElementById('creator-product-description').value;
+        const price = document.getElementById('creator-product-price').value;
+        const image = document.getElementById('creator-product-image').files[0];
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', price);
+        formData.append('productImage', image);
+
+        try {
+            const response = await fetch('http://localhost:5000/submit-product', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            alert(result.message);
+        } catch (error) {
+            alert('Error submitting product');
+        }
+    });
+</script>

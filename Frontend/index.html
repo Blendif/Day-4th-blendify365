@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blendify365 - Your Digital Marketplace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Glassmorphism */
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+    }
+    /* Neumorphism */
+    .neumorph-card {
+      background: #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+      padding: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .neumorph-card:hover {
+      transform: translateY(-5px);
+    }
+    .neumorph-btn {
+      background-color: #e0e0e0;
+      border-radius: 50px;
+      box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+    .neumorph-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-blend-overlay bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 relative">
+    <div class="glass p-10 text-center max-w-3xl mx-auto">
+      <h1 class="text-5xl text-white font-bold mb-6">Welcome to Blendify365</h1>
+      <p class="text-xl text-white mb-8">Explore a world of digital assets, from eBooks and audiobooks to custom wallpapers. Personalized just for you.</p>
+      <a href="#gallery" class="neumorph-btn">Explore the Gallery</a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl text-center font-semibold mb-12">Our Digital Products</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Gallery Card (Neumorphism) -->
+        <div class="neumorph-card">
+          <img src="https://source.unsplash.com/random/400x400?book" alt="eBook" class="rounded-lg w-full h-56 object-cover mb-4">
+          <h3 class="text-2xl font-semibold">Explore Our eBooks</h3>
+          <p class="mt-2">Discover a wide range of eBooks across multiple genres. Perfect for every reader.</p>
+          <a href="#" class="neumorph-btn mt-4 inline-block">View eBooks</a>
+        </div>
+        
+        <!-- Gallery Card -->
+        <div class="neumorph-card">
+          <img src="https://source.unsplash.com/random/400x400?audio" alt="Audiobook" class="rounded-lg w-full h-56 object-cover mb-4">
+          <h3 class="text-2xl font-semibold">Audiobooks Collection</h3>
+          <p class="mt-2">Listen to your favorite books on the go with our rich collection of audiobooks.</p>
+          <a href="#" class="neumorph-btn mt-4 inline-block">Explore Audiobooks</a>
+        </div>
+
+        <!-- Gallery Card -->
+        <div class="neumorph-card">
+          <img src="https://source.unsplash.com/random/400x400?wallpaper" alt="Wallpaper" class="rounded-lg w-full h-56 object-cover mb-4">
+          <h3 class="text-2xl font-semibold">Custom Wallpapers</h3>
+          <p class="mt-2">Beautiful high-quality wallpapers for iOS and Android devices, just for you.</p>
+          <a href="#" class="neumorph-btn mt-4 inline-block">Browse Wallpapers</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl text-center font-semibold mb-12">Why Choose Blendify365?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass p-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">Personalized Experience</h3>
+          <p>Our AI-powered recommendation engine helps you discover content tailored to your interests.</p>
+        </div>
+        
+        <div class="glass p-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">Secure Payments</h3>
+          <p>We use industry-leading payment methods like Stripe and PayPal to ensure your transactions are safe.</p>
+        </div>
+        
+        <div class="glass p-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">Freelancing Services</h3>
+          <p>Get help with content writing, proofreading, and more from our curated list of freelancers.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto px-6 text-center">
+      <p>&copy; 2024 Blendify365. All rights reserved.</p>
+      <p class="mt-4">
+        <a href="#" class="hover:text-gray-400">Privacy Policy</a> | 
+        <a href="#" class="hover:text-gray-400">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

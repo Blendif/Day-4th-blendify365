@@ -1,0 +1,27 @@
+<div id="project-dashboard">
+    <h2>My Projects</h2>
+    <button onclick="createProject()">Create New Project</button>
+    <ul id="project-list"></ul>
+</div>
+
+<script>
+    function createProject() {
+        // Prompt user for project details and send API request to create a project
+    }
+
+    function loadProjects() {
+        fetch('/projects')
+            .then(response => response.json())
+            .then(projects => {
+                const projectList = document.getElementById('project-list');
+                projects.forEach(project => {
+                    const listItem = document.createElement('li');
+                    listItem.innerText = `${project.title} (Due: ${project.deadline})`;
+                    projectList.appendChild(listItem);
+                });
+            });
+    }
+
+    // Load projects when the page loads
+    window.onload = loadProjects;
+</script>

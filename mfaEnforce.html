@@ -1,0 +1,7 @@
+// Enforce MFA for admins
+app.get('/dashboard', authenticateToken, async (req, res) => {
+    if (req.user.role === 'admin' && !req.user.mfaEnabled) {
+        return res.status(403).json({ message: 'MFA is required for admins. Please set up MFA.' });
+    }
+    res.render('dashboard');
+});
